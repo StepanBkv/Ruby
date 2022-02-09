@@ -24,4 +24,14 @@ def max_char str
   max
 end
 
+def min_char str
+  min = 10
+  str.to_s.each_char do |num|
+    if min < num.to_i
+      min = num.to_i
+    end
+  end
+  min
+end
+
 
