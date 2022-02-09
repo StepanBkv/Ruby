@@ -34,4 +34,18 @@ def min_char str
   min
 end
 
+def just str, num = 2
+  if str < 2
+    return false
+  elsif str == 2
+    return true
+  elsif str % num == 0
+    return false
+  elsif num < str / 2
+    just(str, num + 1)
+  else
+    return true
+  end
+end
+
 
