@@ -14,4 +14,14 @@ def multiplex_char str
   sum
 end
 
+def max_char str
+  max = 0
+  str.to_s.each_char do |num|
+    if max < num.to_i
+      max = num.to_i
+    end
+  end
+  max
+end
+
 
