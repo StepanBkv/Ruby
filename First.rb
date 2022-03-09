@@ -3,11 +3,11 @@
 # 1 Задание
 puts ("Hello world")
 # 2 Задание
-username = "Stepan"
-puts"Привет, #{username}!"
-#puts "Привет, #{ARGV[0]}!
+#username = "Stepan"
+#puts"Привет, #{username}!"
+puts "Привет, #{ARGV[0]}!"
 # 3 задание
- printf("Какой твой любимый язык программирования, %s?\n", username)
+puts "Какой твой любимый язык программирования #{ARGV[0]}"
  lang = gets.chomp.strip
  lang.capitalize!
  case lang
