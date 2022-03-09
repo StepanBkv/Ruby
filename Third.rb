@@ -23,3 +23,20 @@ def method_2(num)
 end
 
 puts method_2(12)
+
+# Метод 3 Найти произведение таких делителей числа, сумма цифр
+# которых меньше, чем сумма цифр исходного числа.
+def sum_char str
+  sum = 0
+  str.to_s.each_char do |num|
+    sum += num.to_i
+  end
+  sum
+end
+
+def method_3(num)
+  l = (1..num).map {|i| i if num % i == 0}.compact
+  l.select {|i| i if sum_char(i) < sum_char(num)}.reduce(:*)
+end
+
+puts method_3 15
