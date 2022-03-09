@@ -19,7 +19,7 @@ end
 
 # Метод 2 Найти количество нечетных цифр числа, больших 3
 def method_2(num)
-  num.to_s.each_char.map {|elem| elem if elem.to_i >= 3 and elem.to_i % 2 == 1}.size
+  num.to_s.each_char.select {|elem| elem if elem.to_i >= 3 and elem.to_i % 2 == 1}.size
 end
 
-puts method_2(13)
+puts method_2(12)

@@ -48,4 +48,3 @@ def just str, num = 2
   end
 end
 
-
