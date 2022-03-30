@@ -22,7 +22,7 @@ def method_2(num)
   num.to_s.each_char.select {|elem| elem if elem.to_i >= 3 and elem.to_i % 2 == 1}.size
 end
 
-puts method_2(12)
+#puts method_2(12)
 
 # Метод 3 Найти произведение таких делителей числа, сумма цифр
 # которых меньше, чем сумма цифр исходного числа.
@@ -39,4 +39,4 @@ def method_3(num)
   l.select {|i| i if sum_char(i) < sum_char(num)}.reduce(:*)
 end
 
-puts method_3 15
+puts method_3 14
