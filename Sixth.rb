@@ -28,7 +28,28 @@ end
 #Вариант 7. Задачи 1, 9, 18
 # 1.1 Дана строка. Необходимо найти максимальное из имеющихся в
 # ней вещественных чисел.
+def max_real_number str
+  str.scan(/[0-9]*\.[0-9]*/).map(&:to_f).max
+end
+
+#print max_real_number str = "0.5d 13.52wewds434232.5231"
 #1.9 Дана строка. Необходимо найти минимальное из имеющихся в ней
 # рациональных чисел.
+def min_real_number str
+  str.scan(/[0-9]*\.[0-9]*/).map(&:to_f).min
+end
+
+#print min_real_number str = "0.5d 13.52wewds434232.5231"
 # 1.18 Дана строка. Необходимо найти наибольшее количество идущих
 # подряд цифр.
+def row_number_max str
+  str.scan(/[0-9]*/).collect{|i| i.size if i != ""}.compact.max
+end
+
+#print row_number_max str = "1232145213wdwdw12312dssa123dsd1dsa122421ds"
+
+def seach_february_date str
+  str.scan(/[0-3][0-9] [а-я]* [0-9]{4}/)
+end
+
+print seach_february_date str = "23 февраля 2014 аыфы32 йцуйв 23вфы dsd 23 июля 2015 цйфвцйвыф123 уц уцй 24 мая 2013"
