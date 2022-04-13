@@ -1,26 +1,31 @@
 class Department
   attr_accessor :name
   attr_accessor :phone
+
   @@count_object = 0
-  @duty = []
-  @duty_dedicated
+  @@departmnet_array = []
 
   def initialize name, phone
     @name = name
-    @phone = phone
+    if valid_phone phone
+      @phone = phone
+    else
+      raise("Некорректный номер телефона!")
+    end
+
     @@count_object += 1
+    @duty = []
+    @@departmnet_array.push(self)
   end
 
   def Department.get_count_object
     @@count_object
   end
-
-  def duty=str
-    unless @duty.nil?
-      @duty.push(str)
-    else
-      @duty = [str]
-    end
+  def Department.get_department_array
+    @@departmnet_array
+  end
+  def duty= str
+    @duty.push(str)
   end
 
   def duty_dedicated= count
@@ -42,20 +47,39 @@ class Department
   end
 
   def show_duty_all
-    @duty
+    for i in @duty do
+      yield i
+    end
   end
 
-  def show_date
+  def show_data
     [@name, @phone]
   end
+
+  def valid_phone phone
+    phone =~ /(\+7||8)[0-9]{10}/
+  end
+
+  def Department.read_from_txt file_name
+    f = File.new(file_name)
+    lst = f.read.split("\n")
+    f.close
+    lst.map { |i| Department.new(i.split[0], i.split[1]) }
+  end
+
 end
 
-Person_1 = Department.new("Степан", "89002355541")
-Person_2 = Department.new("Андрей", "89382425742")
-Person_3 = Department.new("Виктор", "89286455841")
-Person_3.duty= "Программист"
-Person_3.duty= "DevOps"
-Person_3.duty= "Аналитик"
-Person_3.duty_dedicated = 0
-Person_3.deleted_duty_dedicated
-print Person_3.show_duty_all
+#Person_1 = Department.new("Степан", "89002355541")
+# Person_2 = Department.new("Андрей", "89382425742")
+# Person_3 = Department.new("Виктор", "89286455841")
+# Person_3.duty = "Программист"
+# Person_3.duty = "DevOps"
+# Person_3.duty = "Аналитик"
+# Person_3.duty_dedicated = 0
+# Person_3.deleted_duty_dedicated
+# Person_3.show_duty_all { |i| puts i }
+
+Department.read_from_txt "department_file"
+# print Department.get_department_array
+Department.get_department_array[0]
+Department.get_department_array[0].show_duty_all {|i| print i}
