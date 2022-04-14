@@ -1,16 +1,15 @@
 require 'yaml'
+
 class Department
   attr_accessor :name
   attr_reader :phone
   @@count_object = 0
-  @@departmnet_array = []
 
   def initialize name, phone, duty
     @name = name
     self.phone = phone
     @@count_object += 1
     self.duty = duty
-    @@departmnet_array.push(self)
   end
 
   def phone= (phone)
@@ -23,10 +22,6 @@ class Department
 
   def Department.get_count_object
     @@count_object
-  end
-
-  def Department.get_department_array
-    @@departmnet_array
   end
 
   def duty= str
@@ -108,49 +103,33 @@ class Department
       raise("Некорректный номер телефона!")
     end
   end
-  def write
+
+  def Department.read_from_txt file_name
+    f = File.new(file_name)
+    lst = f.read.split("\n")
+    f.close
+    #lst.map { |i| Department.new(i.split[0], i.split[1])}
+    departmnet_array = []
+    for i in lst
+      departmet = Department.new(i.split[0], i.split[1], (i.split('duty: ')[1].split(", ")))
+      departmnet_array.push(departmet)
+    end
+    departmnet_array
+  end
+
+  def Department.write_to_txt  file_name, department_array
+    f = File.open(file_name, "w+")
     for i in department_array
       f.write("#{i.show_data} duty: #{i.show_duty_all}\n")
     end
+    f.close
+  end
+
+  def Department.write_to_YAML file_name, array
+    File.write file_name, YAML.dump(array)
+  end
+
+  def Department.read_from_YAML file_name
+    YAML.load_file(file_name)
   end
 end
-
-def read_from_txt file_name
-  f = File.new(file_name)
-  lst = f.read.split("\n")
-  f.close
-  #lst.map { |i| Department.new(i.split[0], i.split[1])}
-  departmnet_array = []
-  for i in lst
-    departmet = Department.new(i.split[0], i.split[1], (i.split('duty: ')[1].split(", ")))
-    departmnet_array.push(departmet)
-  end
-  departmnet_array
-end
-
-def write_to_txt department_array, file_name
-  f = File.open(file_name, "w+")
-  for i in department_array
-    f.write("#{i.show_data} duty: #{i.show_duty_all}\n")
-  end
-  f.close
-end
-
-def write_to_YAML file_name, array
-  File.write file_name, YAML.dump(array)
-end
-
-def read_from_YAML file_name
-  YAML.load_file(file_name)
-end
-
-Department_array = read_from_txt "department_file"
-#print Department_array
-# print Department_array[0].duty
-#Department_array[0].duty = "Фрилансер"
-#print Department_array[0].duty
-Department_array.push(Department.new("Бухгалтерия","89342342123", "Бухгалтер"))
-#write_to_txt(Department_array, "department_file")
-write_to_YAML "department_file.yaml", Department_array
-Department_array_1 = read_from_YAML "department_file.yaml"
-print Department_array_1

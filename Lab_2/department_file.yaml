@@ -12,16 +12,21 @@
   - Фрилансер
 - !ruby/object:Department
   name: Бухгалтерия
-  phone: '89342342123'
+  phone: '89342342145'
   duty:
   - Бухгалтер
 - !ruby/object:Department
   name: Бухгалтерия
-  phone: '89342342123'
+  phone: '89342342145'
   duty:
   - Бухгалтер
 - !ruby/object:Department
-  name: Бухгалтерия
-  phone: '89342342123'
+  name: Менеджеры
+  phone: '89321324425'
   duty:
-  - Бухгалтер
+  - Старший менеджер
+- !ruby/object:Department
+  name: Менеджеры
+  phone: '89321324425'
+  duty:
+  - Старший менеджер
