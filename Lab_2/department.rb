@@ -29,10 +29,6 @@ class Department
     @@departmnet_array
   end
 
-  def duty
-    @duty
-  end
-
   def duty= str
     if !defined? @duty
       if str.is_a?(Array)
