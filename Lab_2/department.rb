@@ -4,11 +4,11 @@ class Department
   @@count_object = 0
   @@departmnet_array = []
 
-  def initialize name, phone
+  def initialize name, phone, duty
     @name = name
     self.phone = phone
     @@count_object += 1
-    @duty = []
+    @duty = duty
     @@departmnet_array.push(self)
   end
 
@@ -27,7 +27,9 @@ class Department
   def Department.get_department_array
     @@departmnet_array
   end
-
+  def duty
+    @duty
+  end
   def duty= str
     @duty.push(str)
   end
@@ -55,23 +57,29 @@ class Department
   end
 
   def show_duty_all
-    self.to_s(@duty) { |i| i + ", " }
+    self.to_s(@duty) { |i| i + ", "}
   end
 
   def to_s string_array
     sum_string = ""
+    count = 0
     for i in string_array
       if block_given?
-        sum_string += yield i
+        if (string_array.size) - 1 != count
+          sum_string += yield i
+        else
+          sum_string += i
+        end
       else
         sum_string += i
       end
+      count += 1
     end
     sum_string
   end
 
   def show_data
-    self.to_s([@name, @phone]){|i| i + " "}
+    self.to_s([@name, @phone]) { |i| i + " " }
   end
 
   def valid_phone phone
@@ -99,20 +107,26 @@ def read_from_txt file_name
   f = File.new(file_name)
   lst = f.read.split("\n")
   f.close
-  lst.map { |i| Department.new(i.split[0], i.split[1]) }
+  #lst.map { |i| Department.new(i.split[0], i.split[1])}
+  departmnet_array = []
+  for i in lst
+    departmet = Department.new(i.split[0], i.split[1], (i.split('duty: ')[1].split(", ")))
+    departmnet_array.push(departmet)
+  end
+  departmnet_array
 end
 
 def write_to_txt department_array, file_name
   f = File.open(file_name, "w+")
   for i in department_array
-    f.write("#{i.show_data} #{i.show_duty_all} \n")
+    f.write("#{i.show_data} duty: #{i.show_duty_all}\n")
   end
   f.close
 end
 
 Department_array = read_from_txt "department_file"
-Department_array.push(Department.new("Andrew", "89324563124"))
-Department_array[0].duty = "Программист"
-Department_array[0].duty = "Jhfhfn"
-print Department_array[0].show_data
+print Department_array
+print Department_array[0].duty
+Department_array[0].duty = "Фрилансер"
+print Department_array[0].duty
 write_to_txt(Department_array, "department_file")
