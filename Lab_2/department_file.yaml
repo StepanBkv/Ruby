@@ -1,0 +1,27 @@
+---
+- !ruby/object:Department
+  name: IT-отдел
+  phone: '89324563124'
+  duty:
+  - Программист
+  - Аналитик
+  - Аналитик больших данных
+  - Фрилансер
+  - Фрилансер
+  - Фрилансер
+  - Фрилансер
+- !ruby/object:Department
+  name: Бухгалтерия
+  phone: '89342342123'
+  duty:
+  - Бухгалтер
+- !ruby/object:Department
+  name: Бухгалтерия
+  phone: '89342342123'
+  duty:
+  - Бухгалтер
+- !ruby/object:Department
+  name: Бухгалтерия
+  phone: '89342342123'
+  duty:
+  - Бухгалтер

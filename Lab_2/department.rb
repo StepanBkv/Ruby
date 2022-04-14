@@ -1,3 +1,4 @@
+require 'yaml'
 class Department
   attr_accessor :name
   attr_reader :phone
@@ -8,7 +9,7 @@ class Department
     @name = name
     self.phone = phone
     @@count_object += 1
-    @duty = duty
+    self.duty = duty
     @@departmnet_array.push(self)
   end
 
@@ -27,11 +28,21 @@ class Department
   def Department.get_department_array
     @@departmnet_array
   end
+
   def duty
     @duty
   end
+
   def duty= str
-    @duty.push(str)
+    if !defined? @duty
+      if str.is_a?(Array)
+        @duty = str
+      else
+        @duty = [str]
+      end
+    else
+      @duty.push(str)
+    end
   end
 
   def duty_dedicated= count
@@ -57,7 +68,7 @@ class Department
   end
 
   def show_duty_all
-    self.to_s(@duty) { |i| i + ", "}
+    self.to_s(@duty) { |i| i + ", " }
   end
 
   def to_s string_array
@@ -101,6 +112,11 @@ class Department
       raise("Некорректный номер телефона!")
     end
   end
+  def write
+    for i in department_array
+      f.write("#{i.show_data} duty: #{i.show_duty_all}\n")
+    end
+  end
 end
 
 def read_from_txt file_name
@@ -124,9 +140,21 @@ def write_to_txt department_array, file_name
   f.close
 end
 
+def write_to_YAML file_name, array
+  File.write file_name, YAML.dump(array)
+end
+
+def read_from_YAML file_name
+  YAML.load_file(file_name)
+end
+
 Department_array = read_from_txt "department_file"
-print Department_array
-print Department_array[0].duty
-Department_array[0].duty = "Фрилансер"
-print Department_array[0].duty
-write_to_txt(Department_array, "department_file")
+#print Department_array
+# print Department_array[0].duty
+#Department_array[0].duty = "Фрилансер"
+#print Department_array[0].duty
+Department_array.push(Department.new("Бухгалтерия","89342342123", "Бухгалтер"))
+#write_to_txt(Department_array, "department_file")
+write_to_YAML "department_file.yaml", Department_array
+Department_array_1 = read_from_YAML "department_file.yaml"
+print Department_array_1
