@@ -62,9 +62,12 @@ class Department
     self.to_s(@duty) { |i| i + ", " }
   end
 
-  def to_s string_array
+  def to_s string_array = []
     sum_string = ""
     count = 0
+    if string_array == []
+      sum_string
+    else
     for i in string_array
       if block_given?
         if (string_array.size) - 1 != count
@@ -78,6 +81,7 @@ class Department
       count += 1
     end
     sum_string
+    end
   end
 
   def show_data
