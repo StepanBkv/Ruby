@@ -59,33 +59,37 @@ class Department
   end
 
   def show_duty_all
-    self.to_s(@duty) { |i| i + ", " }
+    self.to_s
   end
 
-  def to_s string_array = []
-    sum_string = ""
-    count = 0
-    if string_array == []
-      sum_string
-    else
-    for i in string_array
-      if block_given?
-        if (string_array.size) - 1 != count
-          sum_string += yield i
-        else
-          sum_string += i
-        end
-      else
-        sum_string += i
-      end
-      count += 1
-    end
-    sum_string
-    end
+  # def to_s string_array = []
+  #   sum_string = ""
+  #   count = 0
+  #   if string_array == []
+  #     sum_string
+  #   else
+  #   for i in string_array
+  #     if block_given?
+  #       if (string_array.size) - 1 != count
+  #         sum_string += yield i
+  #       else
+  #         sum_string += i
+  #       end
+  #     else
+  #       sum_string += i
+  #     end
+  #     count += 1
+  #   end
+  #   sum_string
+  #   end
+  # end
+
+  def to_s
+    "#{@name} #{@phone} duty:#{@duty}"
   end
 
   def show_data
-    self.to_s([@name, @phone]) { |i| i + " " }
+    self.to_s
   end
 
   def valid_phone phone
@@ -121,7 +125,7 @@ class Department
     departmnet_array
   end
 
-  def Department.write_to_txt  file_name, department_array
+  def Department.write_to_txt file_name, department_array
     f = File.open(file_name, "w+")
     for i in department_array
       f.write("#{i.show_data} duty: #{i.show_duty_all}\n")
