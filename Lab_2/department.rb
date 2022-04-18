@@ -117,7 +117,6 @@ class Department
     f = File.new(file_name)
     lst = f.read.split("\n")
     f.close
-    #lst.map { |i| Department.new(i.split[0], i.split[1])}
     departmnet_array = []
     for i in lst
       departmet = Department.new(i.split[0], i.split[1], (i.split('duty: ')[1].split(", ")))
