@@ -10,6 +10,7 @@ class Department
     self.phone = phone
     @@count_object += 1
     self.duty = duty
+
   end
 
   def phone= (phone)
