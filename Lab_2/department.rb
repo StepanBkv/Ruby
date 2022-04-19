@@ -60,7 +60,7 @@ class Department
   end
 
   def show_duty_all
-    self.to_s
+    self.to_s { |i, sum = ""| print sum + "" + i }
   end
 
   # def to_s string_array = []
@@ -86,7 +86,14 @@ class Department
   # end
 
   def to_s
-    "#{@name} #{@phone} duty:#{@duty}"
+    if !block_given?
+      "#{@name} #{@phone} duty:#{@duty}"
+    else
+      sum = ""
+      for i in @duty
+        yield i + sum
+      end
+    end
   end
 
   def show_data

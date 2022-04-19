@@ -1,21 +1,21 @@
 ---
 - !ruby/object:Post
-  department: IT-отдел,
-  name: PHP-программист,
+  department: Генеральный IT-отдел
+  name: PHP-программист
   salary: 70000р,
   vacant: true
 - !ruby/object:Post
-  department: IT-отдел,
-  name: Младший-PHP-программист,
+  department: IT-отдел
+  name: Младший PHP-программист
   salary: 30000р,
   vacant: true
 - !ruby/object:Post
-  department: IT-отдел,
-  name: Middle-PHP-программист,
+  department: IT-отдел
+  name: Middle-PHP-программист
   salary: 40000р,
   vacant: false
 - !ruby/object:Post
-  department: IT-отдел,
-  name: PHP-программист,
+  department: IT-отдел
+  name: PHP-программист
   salary: 50000р,
   vacant: false
