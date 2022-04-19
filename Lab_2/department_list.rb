@@ -89,12 +89,12 @@ end
 #department_list = Department_list.read_from_txt "./Lab_2/department_file"
 #print department_list
 
-department_list = Department_list.read_from_YAML "./Lab_2/department_file.yaml"
+# department_list = Department_list.read_from_YAML "./Lab_2/department_file.yaml"
 # department_list.add_note("HR", "89002333321", "Старший Hr")
 #
 # department_list.each { |i| puts i }
 # department_list.sort
 # print "\n"
-department_list.each { |i| print i.show_duty_all }
+# department_list.each { |i| print i.show_duty_all }
 
 # print department_list.show_duty_all

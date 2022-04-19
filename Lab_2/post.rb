@@ -1,5 +1,3 @@
-require_relative 'department_list'
-
 class Post
   attr_accessor :department, :name, :salary, :vacant
 

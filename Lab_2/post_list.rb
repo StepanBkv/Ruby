@@ -3,7 +3,7 @@ require_relative 'post'
 class Post_list < Post
   @choose_note = nil
 
-  def initialize post_list
+  def initialize post_list = []
     @post_list = post_list
   end
 
@@ -86,7 +86,7 @@ class Post_list < Post
 
 end
 
-post_list = Post_list.read_from_txt('./Lab_2/post_file')
-Post_list.write_to_YAML('./Lab_2/post_file.yaml', post_list)
-post_list = Post_list.read_from_YAML('./Lab_2/post_file.yaml')
-print post_list
+# post_list = Post_list.read_from_txt('./Lab_2/post_file')
+# Post_list.write_to_YAML('./Lab_2/post_file.yaml', post_list)
+# post_list = Post_list.read_from_YAML('./Lab_2/post_file.yaml')
+# print post_list
