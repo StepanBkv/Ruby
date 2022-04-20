@@ -152,28 +152,8 @@ class Department
       raise("Некорректный номер телефона!")
     end
   end
-
-  def Department.read_from_txt file_name
-
-  end
-
-  def Department.write_to_txt file_name, department_array
-    f = File.open(file_name, "w+")
-    for i in department_array
-      f.write("#{i.show_data} duty: #{i.show_duty_all}\n")
-    end
-    f.close
-  end
-
-  def Department.write_to_YAML file_name, array
-    File.write file_name, YAML.dump(array)
-  end
-
-  def Department.read_from_YAML file_name
-    YAML.load_file(file_name)
-  end
 end
 
-department = Department.new("IT-отдел", "89002344421",
-                            "Разработка сайтов", Post_list.read_from_YAML("post_file.yaml"))
-print department.get_vacant_post
+# department = Department.new("IT-отдел", "89002344421",
+#                             "Разработка сайтов", Post_list.read_from_YAML("./Lab_2/post_file.yaml"))
+# print department.get_vacant_post
