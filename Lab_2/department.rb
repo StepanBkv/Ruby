@@ -7,7 +7,7 @@ class Department
   @@count_object = 0
 
   def initialize name, phone, duty, post_list = Post_list.new()
-    @name = name
+    self.name = name
     self.phone = phone
     @@count_object += 1
     self.duty = duty
@@ -60,6 +60,10 @@ class Department
     vacant_post_list
   end
 
+  def get_all_post
+    
+  end
+
   def duty_dedicated= count
     @duty_dedicated = count
   end
@@ -82,6 +86,7 @@ class Department
     @duty[@duty_dedicated] = str
   end
 
+  #ПЕРЕДЕЛАТЬ
   def show_duty_all
     self.to_s { |i, sum = ""| print sum + "" + i }
   end
@@ -108,6 +113,7 @@ class Department
   #   end
   # end
 
+  #ПЕРЕДЕЛАТЬ
   def to_s
     unless block_given?
       "#{@name} #{@phone} duty:#{@duty}"
@@ -140,7 +146,7 @@ class Department
   end
 
   def Department.phone=(phone)
-    if valid_phone phone
+    if Department.valid_phone phone
       @phone = phone
     else
       raise("Некорректный номер телефона!")
@@ -148,15 +154,7 @@ class Department
   end
 
   def Department.read_from_txt file_name
-    f = File.new(file_name)
-    lst = f.read.split("\n")
-    f.close
-    departmnet_array = []
-    for i in lst
-      departmet = Department.new(i.split[0], i.split[1], (i.split('duty: ')[1].split(", ")))
-      departmnet_array.push(departmet)
-    end
-    departmnet_array
+
   end
 
   def Department.write_to_txt file_name, department_array

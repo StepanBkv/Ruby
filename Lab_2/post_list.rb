@@ -1,6 +1,7 @@
 require_relative 'post'
+require_relative 'note_list'
 
-class Post_list < Post
+class Post_list < Note_list
   @choose_note = nil
 
   def initialize post_list = []
@@ -63,11 +64,11 @@ class Post_list < Post
   end
 
   def Post_list.read_from_YAML file_name
-    super file_name
+    Post_list(super file_name)
   end
 
   def Post_list.read_from_txt file_name
-    super file_name
+    Post_list(super file_name)
   end
 
   def Post_list.write_to_txt file_name, post_list

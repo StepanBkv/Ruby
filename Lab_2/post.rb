@@ -2,10 +2,10 @@ class Post
   attr_accessor :department, :name, :salary, :vacant
 
   def initialize department, name, salary, vacant
-    @department = department
-    @name = name
-    @salary = salary
-    @vacant = vacant
+    self.department = department
+    self.name = name
+    self.salary = salary
+    self.vacant = vacant
   end
 
   def to_s
