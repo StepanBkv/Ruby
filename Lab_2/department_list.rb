@@ -16,14 +16,12 @@ class Department_list < Note_list
   end
 
   def Department_list.read_from_txt file_name
-    f = File.new(file_name)
-    lst = f.read.split("\n")
-    f.close
+    lst = super file_name
     departmnet_list = []
     for i in lst
       departmet = Department.new(i.split('Название: ')[1].split('.')[0],
                                  i.split('Телефон: ')[1].split('.')[0],
-                                 (i.split('Обязанности: ')[1].split(", ")))
+                                 (i.split('Обязанности: ')[1].chomp('.')))
       departmnet_list.push(departmet)
     end
     Department_list.new(departmnet_list)

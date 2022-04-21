@@ -7,8 +7,8 @@ class Post_list < Note_list
     @note_list = post_list
   end
 
-  def add_note post, name, salary, vacant
-    @post_list.push(Post.new(post, name, salary, vacant))
+  def add_note department, name, salary, vacant
+    @post_list.push(Post.new(department, name, salary, vacant))
   end
 
   def change_note department, name, salary, vacant
@@ -20,9 +20,7 @@ class Post_list < Note_list
   end
 
   def Post_list.read_from_txt file_name
-    f = File.new(file_name)
-    lst = f.read.split("\n")
-    f.close
+    lst = super file_name
     post_list = []
     for i in lst
       post = Post.new(i.split('Отдел: ')[1].split(".")[0],
@@ -44,5 +42,4 @@ class Post_list < Note_list
 end
 
 post_list = Post_list.read_from_txt('./Lab_2/post_file')
-post_list.each{|i| puts i}
-# print /Да|Нет/.match('Нет.')
+post_list.each { |i| puts i }

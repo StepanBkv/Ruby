@@ -11,6 +11,10 @@ class Note_list
 
   end
 
+  def change_note
+
+  end
+
   def choose_note
     @choose_note
   end
@@ -80,6 +84,9 @@ class Note_list
   end
 
   def Note_list.read_from_txt file_name
-
+    f = File.new(file_name)
+    lst = f.read.split("\n")
+    f.close
+    lst
   end
 end
