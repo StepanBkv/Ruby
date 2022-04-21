@@ -61,7 +61,7 @@ class Department
   end
 
   def get_all_post
-    
+
   end
 
   def duty_dedicated= count
@@ -86,47 +86,16 @@ class Department
     @duty[@duty_dedicated] = str
   end
 
-  #ПЕРЕДЕЛАТЬ
   def show_duty_all
-    self.to_s { |i, sum = ""| print sum + "" + i }
+    "Обязанности: #{@duty.join(", ")}."
   end
 
-  # def to_s string_array = []
-  #   sum_string = ""
-  #   count = 0
-  #   if string_array == []
-  #     sum_string
-  #   else
-  #   for i in string_array
-  #     if block_given?
-  #       if (string_array.size) - 1 != count
-  #         sum_string += yield i
-  #       else
-  #         sum_string += i
-  #       end
-  #     else
-  #       sum_string += i
-  #     end
-  #     count += 1
-  #   end
-  #   sum_string
-  #   end
-  # end
-
-  #ПЕРЕДЕЛАТЬ
   def to_s
-    unless block_given?
-      "#{@name} #{@phone} duty:#{@duty}"
-    else
-      sum = ""
-      for i in @duty
-        yield i + sum
-      end
-    end
+    "#{self.show_data}. #{self.show_duty_all}"
   end
 
   def show_data
-    self.to_s
+    "Название: #{@name}. Телефон: #{@phone}"
   end
 
   def valid_phone phone
@@ -155,5 +124,5 @@ class Department
 end
 
 # department = Department.new("IT-отдел", "89002344421",
-#                             "Разработка сайтов", Post_list.read_from_YAML("./Lab_2/post_file.yaml"))
-# print department.get_vacant_post
+#                             ["Разработка сайтов", "Обслуживание сервера"], Post_list.read_from_YAML("post_file.yaml"))
+# print department

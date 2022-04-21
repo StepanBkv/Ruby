@@ -20,7 +20,18 @@ class Post_list < Note_list
   end
 
   def Post_list.read_from_txt file_name
-    Post_list.new(super file_name)
+    f = File.new(file_name)
+    lst = f.read.split("\n")
+    f.close
+    post_list = []
+    for i in lst
+      post = Post.new(i.split('Отдел: ')[1].split(".")[0],
+                      i.split('Название: ')[1].split(".")[0],
+                      /\d+/.match(i.split('Oклад: ').to_s),
+                      "Да" == /Да|Нет/.match(i.split('Вакантно: ')[1]).to_s)
+      post_list.push(post)
+    end
+    Post_list.new(post_list)
   end
 
   def Post_list.write_to_txt file_name, post_list
@@ -32,8 +43,6 @@ class Post_list < Note_list
   end
 end
 
-# # post_list = Post_list.read_from_txt('./Lab_2/post_file')
-# post_list = Post_list.read_from_YAML('./Lab_2/post_file.yaml')
-# # post_list = Post_list.read_from_YAML('./Lab_2/post_file.yaml')
-# post_list.choose_note = 1
-# print post_list.choose_note
+post_list = Post_list.read_from_txt('./Lab_2/post_file')
+post_list.each{|i| puts i}
+# print /Да|Нет/.match('Нет.')

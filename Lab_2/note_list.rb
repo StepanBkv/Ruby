@@ -70,4 +70,16 @@ class Note_list
   def Note_list.write_to_YAML file_name, note_list
     File.write file_name, YAML.dump(note_list)
   end
+
+  def Note_list.write_to_txt file_name, note_list
+    f = File.open(file_name, "w+")
+    for i in note_list
+      f.write("#{i.to_s}\n")
+    end
+    f.close
+  end
+
+  def Note_list.read_from_txt file_name
+
+  end
 end
