@@ -6,7 +6,7 @@ class Department
   attr_reader :phone
   @@count_object = 0
 
-  def initialize name, phone, duty, post_list = Post_list.new()
+  def initialize name, phone, duty, post_list = Post_list.new
     self.name = name
     self.phone = phone
     @@count_object += 1
@@ -51,17 +51,11 @@ class Department
   end
 
   def get_vacant_post
-    vacant_post_list = []
-    for i in @Post_list
-      if i.vacant == FALSE
-        vacant_post_list.push(i)
-      end
-    end
-    vacant_post_list
+    @Post_list.get_vacant_post
   end
 
   def get_all_post
-
+    @Post_list.get_all_post
   end
 
   def duty_dedicated= count
@@ -104,6 +98,22 @@ class Department
       (phone =~ /[0-9]{10}/ and phone.size == 10)
   end
 
+  def Department.read_from_txt_post_list post_list_name_file
+    Post_list.read_from_txt post_list_name_file
+  end
+
+  def Department.read_from_yaml_post_list post_list_name_file
+    Post_list.read_from_YAML post_list_name_file
+  end
+
+  def Department.write_to_txt_post_list post_list_name_file, post_list
+    Post_list.write_to_txt post_list_name_file, post_list
+  end
+
+  def Department.write_to_yaml_post_list post_list_name_file, post_list
+    Post_list.write_to_YAML post_list_name_file, post_list
+  end
+
   def Department.get_count_object
     @@count_object
   end
@@ -125,4 +135,4 @@ end
 
 # department = Department.new("IT-отдел", "89002344421",
 #                             ["Разработка сайтов", "Обслуживание сервера"], Post_list.read_from_YAML("post_file.yaml"))
-# print department
+# puts department.get_all_post

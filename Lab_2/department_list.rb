@@ -27,6 +27,22 @@ class Department_list < Note_list
     Department_list.new(departmnet_list)
   end
 
+  def read_from_txt_post_list file_name_post_list
+    Department.read_from_txt_post_list file_name_post_list
+  end
+
+  def read_from_yaml_post_list file_name_post_list
+    Department.read_from_txt_post_list file_name_post_list
+  end
+
+  def write_to_txt_post_list file_name_post_list, post_list
+    Department.write_to_txt_post_list file_name_post_list, post_list
+  end
+
+  def write_to_yaml_post_list file_name_post_list, post_list
+    Department.write_to_yaml_post_list file_name_post_list, post_list
+  end
+
   def Department_list.write_to_txt file_name, department_list
     super file_name, department_list
   end
@@ -41,6 +57,6 @@ class Department_list < Note_list
 
 end
 
-department_list = Department_list.read_from_txt('./Lab_2/department_file')
-department_list.each {|i| puts i}
+# department_list = Department_list.read_from_txt('./Lab_2/department_file')
+# department_list.each {|i| puts i}
 

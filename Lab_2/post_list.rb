@@ -8,11 +8,25 @@ class Post_list < Note_list
   end
 
   def add_note department, name, salary, vacant
-    @post_list.push(Post.new(department, name, salary, vacant))
+    @note_list.push(Post.new(department, name, salary, vacant))
   end
 
   def change_note department, name, salary, vacant
-    @post_list[@choose_note] = Post.new(department, name, salary, vacant)
+    @note_list[@choose_note] = Post.new(department, name, salary, vacant)
+  end
+
+  def get_vacant_post
+    vacant_post_list = []
+    for i in @note_list
+      if i.vacant == FALSE
+        vacant_post_list.push(i)
+      end
+    end
+    vacant_post_list
+  end
+
+  def get_all_post
+    @note_list.each { |i| i.to_s }
   end
 
   def Post_list.read_from_YAML file_name
@@ -41,5 +55,5 @@ class Post_list < Note_list
   end
 end
 
-post_list = Post_list.read_from_txt('./Lab_2/post_file')
-post_list.each { |i| puts i }
+# post_list = Post_list.read_from_txt('./Lab_2/post_file')
+# post_list.each { |i| puts i }
