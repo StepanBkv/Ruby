@@ -6,12 +6,12 @@ class Department
   attr_reader :phone
   @@count_object = 0
 
-  def initialize name, phone, duty, post_list = Post_list.new
+  def initialize name, phone, duty, post_list_name_file
     self.name = name
     self.phone = phone
     @@count_object += 1
     self.duty = duty
-    @Post_list = post_list
+    @Post_list = Department.read_from_yaml_post_list post_list_name_file
   end
 
   def phone= (phone)
@@ -85,7 +85,7 @@ class Department
   end
 
   def to_s
-    "#{self.show_data}. #{self.show_duty_all}"
+    "#{self.show_data}. #{self.show_duty_all} #{@Post_list.get_all_post}"
   end
 
   def show_data

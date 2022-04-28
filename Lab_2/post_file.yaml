@@ -19,3 +19,8 @@
   name: PHP-программист
   salary: 50000р,
   vacant: false
+- !ruby/object:Post
+  department: IT-отдел
+  name: Младший PHP-программист
+  salary: 10000р,
+  vacant: true
