@@ -1,5 +1,3 @@
-require 'yaml'
-
 class Note_list
   @choose_note = nil
 
@@ -7,12 +5,22 @@ class Note_list
     @note_list = note_list
   end
 
-  def add_note
-
+  def add_note note_list
+    case self.class.name
+    when 'Post_list'
+      @note_list.push(Post.new(note_list))
+    when 'Department_list'
+      @note_list.push(Department.new(note_list))
+    end
   end
 
-  def change_note
-
+  def change_note note_list
+    case self.name
+    when "Post_list"
+      @note_list[@choose_note] = Post.new(note_list)
+    when "Department_list"
+      @note_list[@choose_note] = Department.new(note_list)
+    end
   end
 
   def choose_note
@@ -87,6 +95,26 @@ class Note_list
     f = File.new(file_name)
     lst = f.read.split("\n")
     f.close
-    lst
+    note_list = []
+    case self.name
+    when 'Department_list'
+      for i in lst
+        note = Department.new([i.split('Название: ')[1].split('.')[0],
+                                    i.split('Телефон: ')[1].split('.')[0],
+                                    (i.split('Обязанности: ')[1].split('.')[0]),
+                                    (i.split('Название файла с должностями: ')[1].chomp('.'))])
+        note_list.push(note)
+      end
+      Department_list.new(note_list)
+    when "Post_list"
+      for i in lst
+        note = Post.new([i.split('Отдел: ')[1].split(".")[0],
+                         i.split('Название: ')[1].split(".")[0],
+                         /\d+/.match(i.split('Oклад: ').to_s),
+                         "Да" == /Да|Нет/.match(i.split('Вакантно: ')[1]).to_s])
+        note_list.push(note)
+      end
+      Post_list.new(note_list)
+    end
   end
 end

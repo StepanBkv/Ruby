@@ -1,17 +1,14 @@
-require 'yaml'
-require_relative 'post_list'
-
 class Department
-  attr_accessor :name
-  attr_reader :phone
+  attr_accessor :name, :phone, :post_list_name_file
   @@count_object = 0
 
-  def initialize name, phone, duty, post_list_name_file
-    self.name = name
-    self.phone = phone
+  def initialize department_list
+    self.name = department_list[0]
+    self.phone = department_list[1]
     @@count_object += 1
-    self.duty = duty
-    @Post_list = Department.read_from_yaml_post_list post_list_name_file
+    self.duty = department_list[2]
+    @Post_list = Department.read_from_yaml_post_list department_list[3]
+    self.post_list_name_file = department_list[3]
   end
 
   def phone= (phone)
@@ -85,7 +82,7 @@ class Department
   end
 
   def to_s
-    "#{self.show_data}. #{self.show_duty_all} #{@Post_list.get_all_post}"
+    "#{self.show_data}. #{self.show_duty_all} Должности: #{@Post_list.get_all_post}"
   end
 
   def show_data
@@ -132,7 +129,3 @@ class Department
     end
   end
 end
-
-# department = Department.new("IT-отдел", "89002344421",
-#                             ["Разработка сайтов", "Обслуживание сервера"], Post_list.read_from_YAML("post_file.yaml"))
-# puts department.get_all_post
