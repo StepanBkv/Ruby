@@ -75,6 +75,10 @@ class Note_list
     end
   end
 
+  def [] value
+    @note_list[value]
+  end
+
   def Note_list.read_from_YAML file_name
     YAML.load_file(file_name)
   end

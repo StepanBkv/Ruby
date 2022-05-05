@@ -31,16 +31,16 @@ class Department
     end
   end
 
-  def add_post department, name, salary, vacant
-    @Post_list.add_note(department, name, salary, vacant)
+  def add_post post_list
+    @Post_list.add_note(post_list)
   end
 
   def choose_post choose_note
     @Post_list.choose_note = choose_note
   end
 
-  def change_choose_post department, name, salary, vacant
-    @Post_list.change_note(department, name, salary, vacant)
+  def change_choose_post post_list
+    @Post_list.change_note(post_list)
   end
 
   def delete_choose_post
@@ -82,11 +82,15 @@ class Department
   end
 
   def to_s
-    "#{self.show_data}. #{self.show_duty_all} Должности: #{@Post_list.get_all_post}"
+    "#{self.show_data}. #{self.show_duty_all} Должности: #{self.post_list_name_file}"
   end
 
   def show_data
     "Название: #{@name}. Телефон: #{@phone}"
+  end
+
+  def show_full_data
+    "#{self.show_data}. #{self.show_duty_all} Должности: #{@Post_list.get_all_post}"
   end
 
   def valid_phone phone
