@@ -93,6 +93,10 @@ class Department
     "#{self.show_data}. #{self.show_duty_all} Должности: #{@Post_list.get_all_post}"
   end
 
+  def show_strip_data
+    "#{self.show_data}. Должности: #{@Post_list.get_all_post}"
+  end
+
   def valid_phone phone
     (phone =~ /(8){1}[0-9]{10}/ and phone.size == 11) |
       (phone =~ /\+7{1}[0-9]{10}/ and phone.size == 12) |
