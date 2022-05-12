@@ -48,4 +48,15 @@ class Department_list < Note_list
     super file_name, department_list
   end
 
+  def Department_list.split_department_list lst
+    note_list = []
+    for i in lst
+      note_list.push(self.name.split('_')[0].to_sym(new([i.split('Название: ')[1].split('.')[0],
+                                                         i.split('Телефон: ')[1].split('.')[0],
+                                                         (i.split('Обязанности: ')[1].split('.')[0]),
+                                                         (i.split('Название файла с должностями: ')[1].chomp('.'))])))
+    end
+    self.new(note_list)
+  end
+
 end
