@@ -5,7 +5,6 @@ class Decorator_premium < Base_decorator_salary
   end
 
   def get_salary
-    salary = self.salary.get_salary
-    salary + (salary * @premium) / 100
+    self.component.get_salary * (1 + (@premium / 100.0))
   end
 end

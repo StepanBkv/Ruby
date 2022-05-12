@@ -1,11 +1,20 @@
 class Base_decorator_salary < Salary
-  attr_accessor :salary
+
+
   def initialize component
-    self.salary = component
+    self.component = component
   end
 
   def get_salary
-    self.salary.get_salary
   end
+
+  private def component=(component)
+    @component = component
+  end
+
+  protected def component
+    @component
+  end
+
 end
 

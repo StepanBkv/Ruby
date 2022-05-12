@@ -5,6 +5,6 @@ class Decorator_fine < Base_decorator_salary
   end
 
   def get_salary
-    self.salary.get_salary - @fine
+    self.component.get_salary - @fine
   end
 end
