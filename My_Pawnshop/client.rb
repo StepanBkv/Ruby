@@ -9,6 +9,7 @@ class Client
     self.phone = cli_list[3]
     self.series = cli_list[4]
     self.number = cli_list[5]
+    self.thing = cli_list[6]
   end
 
   def phone= phone

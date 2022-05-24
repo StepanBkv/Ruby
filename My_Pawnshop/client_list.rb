@@ -1,6 +1,6 @@
 class Client_list < Note_list
   def initialize note_list = []
-    super note_list
+    @note_list =  note_list
   end
 
   def Client_list.read_from_YAML file_name
