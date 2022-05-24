@@ -6,6 +6,10 @@ class Thing
     @@number += 1
     @number = @@number
     @name = thing_lst[0]
-    self.price = thing_lst[1]
+    self.price = Decorator_comis.new(FiX_pri.new(thing_lst[0]), thing_lst[1])
+  end
+
+  def price= thing_lst
+
   end
 end

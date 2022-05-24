@@ -9,6 +9,8 @@ class Note_list
     case self.class.name
     when 'Client_list'
       @note_list.push(Client.new(note_list))
+    when "Thing_list"
+      @note_list[@choose_note] = Thing.new(note_list)
     end
   end
 
@@ -16,6 +18,8 @@ class Note_list
     case self.name
     when "Client_list"
       @note_list[@choose_note] = Client.new(note_list)
+    when "Thing_list"
+    @note_list[@choose_note] = Thing.new(note_list)
     end
   end
 
