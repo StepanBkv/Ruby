@@ -1,6 +1,7 @@
 --- !ruby/object:Client_list
 note_list:
 - !ruby/object:Client
+  id: 1
   name: Степан
   surname: Бабаков
   middlename: Евгеньевич
@@ -8,8 +9,41 @@ note_list:
   series: '2345'
   number: '342562'
 - !ruby/object:Client
+  id: 2
+  name: Андрей
+  surname: Стрелков
+  middlename: Евгеньевич
+  phone: '89002355541'
+  series: '2345'
+  number: '342562'
+- !ruby/object:Client
+  id: 3
+  name: Александр
+  surname: Петров
+  middlename: Евгеньевич
+  phone: '89002355541'
+  series: '2345'
+  number: '342562'
+- !ruby/object:Client
+  id: 4
   name: Степан
   surname: Бабаков
+  middlename: Евгеньевич
+  phone: '89002355541'
+  series: '2345'
+  number: '342562'
+- !ruby/object:Client
+  id: 5
+  name: Андрей
+  surname: Стрелков
+  middlename: Евгеньевич
+  phone: '89002355541'
+  series: '2345'
+  number: '342562'
+- !ruby/object:Client
+  id: 7
+  name: Александр
+  surname: Петров
   middlename: Евгеньевич
   phone: '89002355541'
   series: '2345'
