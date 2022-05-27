@@ -1,6 +1,7 @@
 class Client
 
   attr_accessor :name, :surname, :middlename
+  @@id = 0
 
   def initialize cli_list
     self.name = cli_list[0]
@@ -9,7 +10,12 @@ class Client
     self.phone = cli_list[3]
     self.series = cli_list[4]
     self.number = cli_list[5]
-    self.thing = cli_list[6]
+    @@id += 1
+    @id = @@id
+  end
+
+  def id
+    @id
   end
 
   def phone= phone

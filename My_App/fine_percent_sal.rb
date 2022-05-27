@@ -1,11 +1,11 @@
 class Fine_percent_sal < Percent_sal
-  def initialize fixed, add_percent, fine_percent
+  def initialize fixed, add_percent, fine
     super fixed, add_percent
-    @fine_percent = fine_percent
+    @fine = fine
   end
 
   def get_salary
     salary = super
-    salary - (salary * @fine_percent)/100
+    salary - @fine
   end
 end

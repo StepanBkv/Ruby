@@ -5,11 +5,10 @@ puts ("Hello world")
 # 2 Задание
 #username = "Stepan"
 #puts"Привет, #{username}!"
-puts "Привет, #{ARGV[0]}!"
+#puts "Привет, #{ARGV[0]}!"
 # 3 задание
 puts "Какой твой любимый язык программирования #{ARGV[0]}"
- lang = gets.chomp.strip
- lang.capitalize!
+ lang = gets.chomp.strip.capitalize!
  case lang
    when "Ruby"
    puts "Подлиза)))))"

@@ -1,0 +1,28 @@
+---
+- !ruby/object:Office
+  name: Офис 1
+  number: '0001'
+  mebel_list: !ruby/object:Mebel_list
+    note_list: !ruby/object:Mebel
+      name: Диван
+      price: 40000
+      col: 3
+      number: '0001'
+- !ruby/object:Office
+  name: Офис 2
+  number: '0002'
+  mebel_list: !ruby/object:Mebel_list
+    note_list: !ruby/object:Mebel
+      name: Стулья
+      price: 20000
+      col: 10
+      number: '0003'
+- !ruby/object:Office
+  name: Офис 3
+  number: '0003'
+  mebel_list: !ruby/object:Mebel_list
+    note_list: !ruby/object:Mebel
+      name: Шкафы
+      price: 9000
+      col: 1
+      number: '0002'

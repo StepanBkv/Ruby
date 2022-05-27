@@ -1,6 +1,4 @@
 class Base_decorator_salary < Salary
-
-
   def initialize component
     self.component = component
   end
